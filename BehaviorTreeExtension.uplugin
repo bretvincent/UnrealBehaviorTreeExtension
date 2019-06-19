@@ -1,0 +1,27 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "BehaviorTreeExtension",
+	"Description": "Extends Unreal Engine's Behavior Tree adding a State Machine Selector and a Utility Selector",
+	"Category": "AI",
+	"CreatedBy": "Vincent Breton Kochanowski",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "mailto:bretvincent@hotmail.com",
+	"EngineVersion": "4.22.0",
+	"CanContainContent": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "BehaviorTreeExtension",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"WhitelistPlatforms": [
+				"Win64",
+				"Android"
+			]
+		}
+	]
+}
