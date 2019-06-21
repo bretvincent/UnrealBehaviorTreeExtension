@@ -30,9 +30,38 @@ This will allow a Selector to serve as a State Machine as long as each of it's c
 
 To create a new State Transition Decorator:
 * You can either inherit from StateTransitionDecorator in C++ and override the ShouldTransition_Execute() function
+```C++
+/**
+ * It will allow execution of it's child node if no transition has activated;
+ *  if transition activated; it will transition to child node set
+ */
+UCLASS(Abstract)
+class BEHAVIORTREEEXTENSION_API UBTStateTransitionDecorator : public UBTDecorator
+{
+	GENERATED_UCLASS_BODY()
+public:
+	/** The Id of the state to transition to when activated*/
+	UPROPERTY(EditAnywhere)
+	int32 StateToTransitionId;
 
-<insert header file of StateTransitionDecorator>
-  
+	/* The id of this state must be unique among all children of StateMachineSelector */
+	UPROPERTY(EditAnywhere)
+	int32 StateId;
+
+	void OnGameplayTaskActivated(UGameplayTask& Task) override;
+	void OnGameplayTaskDeactivated(UGameplayTask& Task) override;
+
+	virtual bool CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const override;
+	bool ShouldTransition(FBehaviorTreeSearchData& SearchData);
+protected:
+	virtual bool ShouldTransition_Execute(FBehaviorTreeSearchData& SearchData);
+private:
+	virtual uint16 GetInstanceMemorySize() const override;
+	virtual void TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds) override;
+	virtual void OnNodeActivation(FBehaviorTreeSearchData& SearchData) override;
+
+};
+ ```
 * You can also inherit from StateTransitionBlueprint in the Editor and define the ShouldTransitionFromBlueprint() function in blueprint editor.
   
  ### Utility Selector
@@ -42,11 +71,28 @@ To create a new State Transition Decorator:
  < Insert picture of usage in Unreal; graph with a Utility selector and its children with a mix of Utility Decorators>
  
  To create a new Utility Decorator you can either:
-   * Inherit from Utility Decorator or any of it's derived classes in C++ and override the CalculateUtility() function.
-   
-   <insert header file of UtilityDecorator>
-  
-   * Inherit from UtilityBlueprintDecorator in the Editor and define the CalculateUtilityFromBlueprint() function in blueprint editor.
+   * Inherit from Utility Decorator or any of it's derived classes in C++ and override the CalculateUtility() function which should return a number between 0 and 1.
+   ```C++
+/**
+ * The base class for all Utility Decorator's that will be used by UtilitySelector to return a 
+ * utility value
+ */
+UCLASS(Abstract)
+class BEHAVIORTREEEXTENSION_API UBTUtilityDecorator : public UBTDecorator
+{
+	GENERATED_UCLASS_BODY()
+public:
+	/** The Higher the value the greater the priority for this action*/
+	UPROPERTY(EditAnywhere)
+	int32 BucketPriorityValue;
+
+	void OnGameplayTaskActivated(UGameplayTask& Task) override;
+	void OnGameplayTaskDeactivated(UGameplayTask& Task) override;
+	virtual bool CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const override;
+	virtual float CalculateUtility(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const;
+};
+   ```
+   * Inherit from UtilityBlueprintDecorator in the Editor and define the CalculateUtilityFromBlueprint() function in blueprint editor which should return a number between 0 and 1.
  
  #### Selection Types
  
