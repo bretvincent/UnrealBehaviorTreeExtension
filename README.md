@@ -3,7 +3,7 @@
 ## Overview
 
 An extension of Unreal Engine's Behavior Tree adding the following nodes:
-* An State Machine Selector that will run whichever child state is currently active and transition to new child state depending on the transitions set.
+* A State Machine Selector that will run whichever child state is currently active and transition to new child state depending on the transitions set.
 * A Utility Selector that will choose whichever child has the greatest utility at that moment.
 * A Weighted Random Selector that will do a weighted random roll over it's children and run that child
 * An Inverter Decorator that will invert the result of it's attached task eg. Success -> Fail or Fail -> Success.
