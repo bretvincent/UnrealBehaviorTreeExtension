@@ -70,9 +70,14 @@ To create a new State Transition Decorator:
   
    #### Utility Decorators
 
-  * LinearUtilityDecorator: this will calculate its utility score based off a linear function given a current value and a max value.
-  * QuadraticUtilityDecorator: this will calculate its utility score based off a quadratic function given a current value, a max value and a power value.
-  * LogisticUtilityDecorator: this will calculate its utility score based off the logistic function < insert link to logistic function in wikipedia>.
+  ##### LinearUtilityDecorator
+  It will calculate its utility score based off a linear function given a current value and a max value.
+  
+  ##### QuadraticUtilityDecorator
+  It will calculate its utility score based off a quadratic function given a current value, a max value and a power value.
+  
+  ##### LogisticUtilityDecorator
+  It will calculate its utility score based off the logistic function < insert link to logistic function in wikipedia>.
   
   ### WeightedRandomSelector
   
