@@ -115,7 +115,7 @@ public:
   It will calculate its utility score based off a quadratic function given a current value, a max value and a power value.
   
   ##### Logistic Utility Decorator
-  It will calculate its utility score based off the ![Logistic Function](https://en.wikipedia.org/wiki/Logistic_function).
+  It will calculate its utility score based off the [Logistic Function](https://en.wikipedia.org/wiki/Logistic_function).
   
   ##### Blueprint Utility Decorator
   It will calculate its utility score based off the value returned from the function defined in blueprint. The value should be between 0 and 1.
