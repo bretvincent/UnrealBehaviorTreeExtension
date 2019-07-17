@@ -1,4 +1,4 @@
-# UnrealBehaviorTreeExtension
+# Unreal Behavior Tree Extension
 
 ## Overview
 
