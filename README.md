@@ -14,16 +14,12 @@ An extension of Unreal Engine's Behavior Tree adding the following nodes:
 
 This will allow a Selector to serve as a State Machine as long as each of it's children has a State Decorator attached to it.
 
-< Insert picture of usage in Unreal; graph with a state machine selector and its children with blueprint state transition decorators>
+![State Machine Selector](https://github.com/bretvincent/UnrealBehaviorTreeExtension/blob/master/Images/StateMachineSelector.png)
 
 * InitialStateId: This is the Id of the child to execute when first entering the selector.
 * ExitStateMachineId: This is the Id reserved to allow exiting the state machine when a state sets it as its transition Id.   Otherwise, the state machine will continue running it's current state until it fails.
 
-<insert picture of Details Panel for State Machine Selector>
-  
 #### State Transition Decorator
-
-<insert picture of Details Panel for State Decorator>
   
 * StateId: Every State Decorator will need to set this to a unique number amongst all the other states.
 * StateToTransitionId: Each State Decorator will set which state it wants to transition to when it's transition is activated.
@@ -68,7 +64,7 @@ private:
  
  This will make it so that a Selector will choose which child to execute next based off each child's utility score as long as each of it's children has a Utility Decorator.
  
- < Insert picture of usage in Unreal; graph with a Utility selector and its children with a mix of Utility Decorators>
+![Utility Selector](https://github.com/bretvincent/UnrealBehaviorTreeExtension/blob/master/Images/UtilitySelector.png)
  
  To create a new Utility Decorator you can either:
    * Inherit from Utility Decorator or any of it's derived classes in C++ and override the CalculateUtility() function which should return a number between 0 and 1.
@@ -98,8 +94,6 @@ public:
  
  The decision of which child gets selected depends upon the selection type chosen.
  
- <insert picture of Details Panel for Utility Selector>
-  
   ##### PickHighestValue
   This will choose the child with the highest utility score.
   
@@ -109,8 +103,6 @@ public:
   ##### BucketedWeightedRandom
   
   Each Utility Decorator has a BucketPriorityValue property.
-  
-  <insert picture of Details Panel for Utility Decorator>
   
   This value is used to place each child in different priority buckets. After each child calculates their utility score only    those among the highest bucket will be chosen to execute based off a weighted random of the children from that bucket.
   
@@ -128,8 +120,7 @@ public:
   ### WeightedRandomSelector
   
   This is a selector that will do a weighted random of its children depending upon the weights defined in the Selector.
-  
-  < Insert picture of details panel of WeightedRandomSelector>
+ 
   
   ## License
   
