@@ -94,13 +94,13 @@ public:
  
  The decision of which child gets selected depends upon the selection type chosen.
  
-  ##### PickHighestValue
+  ##### Pick Highest Value
   This will choose the child with the highest utility score.
   
-  ##### SubsetWeightedRandom
+  ##### Subset Weighted Random
   This will choose among the n highest scoring children based off the value set in SubsetChosenForWeightedRandom. Eg. SubsetChosenForWeightedRandom: 0.9; this means that only the top 90% of children will be considered, afterwards, a weighted random roll based off the remaining children's utility score will determine which child will be chosen.
   
-  ##### BucketedWeightedRandom
+  ##### Bucketed Weighted Random
   
   Each Utility Decorator has a BucketPriorityValue property.
   
@@ -108,14 +108,17 @@ public:
   
    #### Utility Decorators
 
-  ##### LinearUtilityDecorator
+  ##### Linear Utility Decorator
   It will calculate its utility score based off a linear function given a current value and a max value.
   
-  ##### QuadraticUtilityDecorator
+  ##### Quadratic Utility Decorator
   It will calculate its utility score based off a quadratic function given a current value, a max value and a power value.
   
-  ##### LogisticUtilityDecorator
-  It will calculate its utility score based off the logistic function < insert link to logistic function in wikipedia>.
+  ##### Logistic Utility Decorator
+  It will calculate its utility score based off the ![Logistic Function](https://en.wikipedia.org/wiki/Logistic_function).
+  
+  ##### Blueprint Utility Decorator
+  It will calculate its utility score based off the value returned from the function defined in blueprint. The value should be between 0 and 1.
   
   ### WeightedRandomSelector
   
